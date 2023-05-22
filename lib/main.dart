@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Dialoges',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -24,19 +24,32 @@ class MyApp extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Get.snackbar(
-                    'Test Result',
-                    'Your test has been uploaded!',
-                    colorText: Colors.pink,
-                    backgroundColor: Colors.black,
-                    // borderRadius: 20.0,
-                    // backgroundGradient: const LinearGradient(
-                    //     colors: [Colors.black, Colors.grey]),
-                    isDismissible: true,
-                    dismissDirection: DismissDirection.horizontal,
-                    overlayBlur: 5.0,
-                    // overlayColor: Colors.green,
-                    //showProgressIndicator: true,
+                  Get.defaultDialog(
+                    title: 'DMC SHEET',
+                    //  backgroundColor: Colors.blueGrey,
+                    middleText: 'Result has been uploaded!',
+                    textCancel: 'Cancel',
+                    textConfirm: 'Confirm',
+                    confirmTextColor: Colors.green,
+                    onCancel: () {},
+                    onConfirm: () {},
+                    buttonColor: Colors.pinkAccent,
+                    content: Row(
+                      children: const [
+                        CircularProgressIndicator(),
+                        SizedBox(width: 26.0),
+                        Expanded(child: Text('Data is Loading'))
+                      ],
+                    ),
+                    cancel: const Text(
+                      'No',
+                      style: TextStyle(fontSize: 19.0),
+                    ),
+                    actions: [
+                      ElevatedButton(onPressed: () {}, child: Text('Button-1')),
+                      ElevatedButton(onPressed: () {}, child: Text('Button-2')),
+                    ],
+                    //  barrierDismissible: true,
                   );
                 },
                 child: const Text('show Snackbar'),
