@@ -9,13 +9,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Dialoges',
+      title: 'Bottom sheets',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Get-X'),
+          title: const Text('Bottom sheets'),
         ),
         body: Center(
           child: Column(
@@ -24,33 +24,22 @@ class MyApp extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  Get.defaultDialog(
-                    title: 'DMC SHEET',
-                    //  backgroundColor: Colors.blueGrey,
-                    middleText: 'Result has been uploaded!',
-                    textCancel: 'Cancel',
-                    textConfirm: 'Confirm',
-                    confirmTextColor: Colors.green,
-                    onCancel: () {},
-                    onConfirm: () {},
-                    buttonColor: Colors.pinkAccent,
-                    content: Row(
-                      children: const [
-                        CircularProgressIndicator(),
-                        SizedBox(width: 26.0),
-                        Expanded(child: Text('Data is Loading'))
+                  Get.bottomSheet(Container(
+                    child: Wrap(
+                      children: [
+                        ListTile(
+                          leading: Icon(Icons.wb_sunny_outlined),
+                          title: Text('Light Theme'),
+                          onTap: () => {},
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.wb_sunny),
+                          title: Text('Dark Theme'),
+                          onTap: () => {},
+                        )
                       ],
                     ),
-                    cancel: const Text(
-                      'No',
-                      style: TextStyle(fontSize: 19.0),
-                    ),
-                    actions: [
-                      ElevatedButton(onPressed: () {}, child: Text('Button-1')),
-                      ElevatedButton(onPressed: () {}, child: Text('Button-2')),
-                    ],
-                    //  barrierDismissible: true,
-                  );
+                  ));
                 },
                 child: const Text('show Snackbar'),
               )
